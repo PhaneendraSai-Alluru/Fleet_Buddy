@@ -11,36 +11,79 @@ class _vin_listState extends State<vin_list> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Expanded(
-          child: Reusable_list_title_card(carChild: const SizedBox.shrink(),),
+          child: dealer_title_card(),
         ),
         Expanded(
-          flex: 4,
-          child: Reusable_list_title_card(carChild: vin_list())
+          flex: 5,
+          child: Reusable_card(),
         ),
       ],
     );
   }
 }
 
-class Reusable_list_title_card extends StatelessWidget {
+class Reusable_card extends StatelessWidget {
+  const Reusable_card({
+    super.key,
+  });
 
-  Reusable_list_title_card({ required this.carChild});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        // border: Border(
+        //   top: BorderSide(color: Colors.black, width: 1),
+        //   bottom: BorderSide(color: Colors.black, width: 1),
+        // ),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: vin_list_table(),
+    );
+  }
+}
 
-  final Widget carChild;
+class dealer_title_card extends StatelessWidget {
+  const dealer_title_card({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.blueGrey,
+        color: Colors.black,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: carChild,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'Volvo Cars India Pvt Ltd',
+            style: TextStyle(fontSize: 24, color: Colors.white),
+          ),
+        ),
+        SizedBox(height: 1),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            'VOLVOIND560071',
+            style: TextStyle(fontSize: 16, color: Colors.white),
+          ),
+        ),
+      ],
+      ),
     );
   }
 }
@@ -53,29 +96,48 @@ class vin_list_table extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Table(
-      border: TableBorder.all(
-        color: Colors.grey,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      // Adds visible grid lines
+      // border: TableBorder(
+      //   top: BorderSide(color: Colors.black, width: 1),
+      //   bottom: BorderSide(color: Colors.black, width: 1),
+      // ),
+      columnWidths: const {
+        0: FlexColumnWidth(2),
+        1: FlexColumnWidth(2),
+      },
+      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       children: [
-        const TableRow(
+        TableRow(
+          decoration: const BoxDecoration(color: Colors.white12,
+          border: Border(
+            top: BorderSide(color: Colors.black, width: 1),
+            bottom: BorderSide(color: Colors.black, width: 1),
+          )),
           children: [
-            TableCell(
-              child: Padding(
-                padding: EdgeInsets.all(8),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Align(
+                alignment: Alignment.centerLeft,
                 child: Text(
-                  "VIN",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  'VIN',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
-            TableCell(
-              child: Padding(
-                padding: EdgeInsets.all(8),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Align(
+                alignment: Alignment.centerLeft,
                 child: Text(
-                  "Status",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  'Status',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -83,52 +145,545 @@ class vin_list_table extends StatelessWidget {
         ),
         TableRow(
           children: [
-            TableCell(
-              child: Padding(
-                padding: EdgeInsets.all(8),
-                child: Text("ABCDEFGHIJKLMNOP1234"),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Text(
+                'VINABCDEF123456',
+                style: TextStyle(color: Colors.black),
               ),
             ),
-            TableCell(
-              child: Padding(
-                padding: EdgeInsets.all(5),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.only(right: 5),
-                        child: Icon(Icons.car_crash),
-                      ),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: status_icons(),
+            ),
+          ],
+        ),
+        TableRow(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Text(
+                'VINABCDEF123456',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Icon(
+                      Icons.car_crash,
+                      color: Colors.green,
+                      size: 24,
                     ),
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.only(right: 5),
-                        child: Icon(Icons.oil_barrel),
-                      ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_alert_rounded,
+                      color: Colors.red,
+                      size: 24,
                     ),
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.only(right: 5),
-                        child: Icon(Icons.computer),
-                      ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_2_bar,
+                      color: Colors.orangeAccent,
+                      size: 24,
                     ),
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.only(right: 5),
-                        child: Icon(Icons.disc_full),
-                      ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.disc_full,
+                      color: Colors.red,
+                      size: 24,
                     ),
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.only(right: 5),
-                        child: Icon(Icons.computer),
-                      ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.computer,
+                      color: Colors.green,
+                      size: 24,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
+        ),
+        TableRow(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Text(
+                'VINABCDEF123456',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Icon(
+                      Icons.car_crash,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_alert_rounded,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_2_bar,
+                      color: Colors.orangeAccent,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.disc_full,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.computer,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        TableRow(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Text(
+                'VINABCDEF123456',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Icon(
+                      Icons.car_crash,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_alert_rounded,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_2_bar,
+                      color: Colors.orangeAccent,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.disc_full,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.computer,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        TableRow(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Text(
+                'VINABCDEF123456',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Icon(
+                      Icons.car_crash,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_alert_rounded,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_2_bar,
+                      color: Colors.orangeAccent,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.disc_full,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.computer,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        TableRow(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Text(
+                'VINABCDEF123456',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Icon(
+                      Icons.car_crash,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_alert_rounded,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_2_bar,
+                      color: Colors.orangeAccent,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.disc_full,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.computer,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        TableRow(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Text(
+                'VINABCDEF123456',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Icon(
+                      Icons.car_crash,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_alert_rounded,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_2_bar,
+                      color: Colors.orangeAccent,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.disc_full,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.computer,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        TableRow(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Text(
+                'VINABCDEF123456',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Icon(
+                      Icons.car_crash,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_alert_rounded,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_2_bar,
+                      color: Colors.orangeAccent,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.disc_full,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.computer,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        TableRow(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Text(
+                'VINABCDEF123456',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Icon(
+                      Icons.car_crash,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_alert_rounded,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_2_bar,
+                      color: Colors.orangeAccent,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.disc_full,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.computer,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        TableRow(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Text(
+                'VINABCDEF123456',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Icon(
+                      Icons.car_crash,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_alert_rounded,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.battery_2_bar,
+                      color: Colors.orangeAccent,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.disc_full,
+                      color: Colors.red,
+                      size: 24,
+                    ),
+                  ),
+                  Expanded(
+                    child: Icon(
+                      Icons.computer,
+                      color: Colors.green,
+                      size: 24,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+
+      ],
+    );
+  }
+}
+
+class status_icons extends StatelessWidget {
+  const status_icons({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Icon(
+            Icons.car_crash,
+            color: Colors.green,
+            size: 24,
+          ),
+        ),
+        Expanded(
+          child: Icon(
+            Icons.battery_alert_rounded,
+            color: Colors.red,
+            size: 24,
+          ),
+        ),
+        Expanded(
+          child: Icon(
+            Icons.battery_2_bar,
+            color: Colors.orangeAccent,
+            size: 24,
+          ),
+        ),
+        Expanded(
+          child: Icon(
+            Icons.disc_full,
+            color: Colors.red,
+            size: 24,
+          ),
+        ),
+        Expanded(
+          child: Icon(
+            Icons.computer,
+            color: Colors.green,
+            size: 24,
+          ),
         ),
       ],
     );
