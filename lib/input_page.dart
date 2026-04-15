@@ -39,7 +39,7 @@ class _screen1State extends State<screen1> {
                   ),
                   Expanded(
                     child: Reusable_Card(
-                      colour: Colors.orangeAccent,
+                      colour: Color(0XFF92B8F9),
                       carChild: IconContents(
                         icon: Icons.disc_full,
                         title_text: '200',
@@ -49,10 +49,10 @@ class _screen1State extends State<screen1> {
                   ),
                   Expanded(
                     child: Reusable_Card(
-                      colour: Colors.orangeAccent,
+                      colour: Color(0XFF92B8F9),
                       carChild: IconContents(
                         icon: Icons.battery_alert_rounded,
-                        title_text: '1000',
+                        title_text: '15',
                         sub_title: 'Battery',
                       ),
                     ),
@@ -67,7 +67,7 @@ class _screen1State extends State<screen1> {
                 children: [
                   Expanded(
                     child: Reusable_Card(
-                      colour: Colors.orange,
+                      colour: Color(0XFF92B8F9),
                       carChild: IconContents(
                         icon: Icons.battery_2_bar_outlined,
                         title_text: '100',
@@ -77,20 +77,20 @@ class _screen1State extends State<screen1> {
                   ),
                   Expanded(
                     child: Reusable_Card(
-                      colour: Colors.lightBlueAccent,
+                      colour: Color(0XFF92B8F9),
                       carChild: IconContents(
                         icon: Icons.computer,
-                        title_text: '300',
+                        title_text: '25',
                         sub_title: 'Software Update',
                       ),
                     ),
                   ),
                   Expanded(
                     child: Reusable_Card(
-                      colour: Colors.blue,
+                      colour: Color(0XFF92B8F9),
                       carChild: IconContents(
                         icon: Icons.oil_barrel,
-                        title_text: '1000',
+                        title_text: '100',
                         sub_title: 'Oil Change',
                       ),
                     ),
@@ -105,7 +105,7 @@ class _screen1State extends State<screen1> {
                 children: [
                   Expanded(
                     child: Reusable_Card(
-                      colour: Colors.lightGreen,
+                      colour: Color(0XFF92B8F9),
                       carChild: IconContents(
                         icon: Icons.warehouse,
                         title_text: '800',
@@ -115,10 +115,10 @@ class _screen1State extends State<screen1> {
                   ),
                   Expanded(
                     child: Reusable_Card(
-                      colour: Colors.lightGreen,
+                      colour: Color(0XFF92B8F9),
                       carChild: IconContents(
                         icon: Icons.directions_boat_filled,
-                        title_text: '1000',
+                        title_text: '200',
                         sub_title: 'In Transit',
                       ),
                     ),
@@ -128,7 +128,7 @@ class _screen1State extends State<screen1> {
             ),
             Expanded(
               child: Reusable_Card(
-                colour: Colors.lightGreen,
+                colour: Color(0XFF92B8F9),
                 carChild: IconContents(
                   icon: Icons.disc_full,
                   title_text: '1000',
