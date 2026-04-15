@@ -10,7 +10,9 @@ class vin_list extends StatefulWidget {
 class _vin_listState extends State<vin_list> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return SafeArea(child: Scaffold(
+        appBar: AppBar(title: Text('Fleet Buddy'),),
+      body:Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -22,7 +24,7 @@ class _vin_listState extends State<vin_list> {
           child: Reusable_card(),
         ),
       ],
-    );
+    ),),);
   }
 }
 
@@ -81,7 +83,7 @@ class dealer_title_card extends StatelessWidget {
             'VOLVOIND560071',
             style: TextStyle(fontSize: 16, color: Colors.white),
           ),
-        ),
+          ),
       ],
       ),
     );
@@ -147,10 +149,13 @@ class vin_list_table extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.all(12),
-              child: Text(
+              child: GestureDetector(onTap: (){
+                Navigator.pushNamed(context, '/vin_details');
+              },
+                child:Text(
                 'VINABCDEF123456',
                 style: TextStyle(color: Colors.black),
-              ),
+              ),)
             ),
             Padding(
               padding: EdgeInsets.all(12),

@@ -10,128 +10,135 @@ class screen1 extends StatefulWidget {
 class _screen1State extends State<screen1> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        // Need to change the first Card as per requirement.
-        Expanded(child: titleCard()),
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Reusable_Card(
-                  colour: Colors.redAccent,
-                  carChild: IconContents(
-                    icon: Icons.car_crash,
-                    title_text: '1000',
-                    sub_title: 'Action Required',
+    return SafeArea(child: Scaffold(
+        appBar: AppBar(title: Text('Fleet Buddy'),),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Need to change the first Card as per requirement.
+            Expanded(child: titleCard()),
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: GestureDetector(onTap: (){
+                      Navigator.pushNamed(context, '/list_page');
+                    },
+                        child: Reusable_Card(
+                      colour: Colors.redAccent,
+                      carChild: IconContents(
+                        icon: Icons.car_crash,
+                        title_text: '1000',
+                        sub_title: 'Action Required',
+                      ),
+                    ),
+                    )
                   ),
-                ),
-              ),
-              Expanded(
-                child: Reusable_Card(
-                  colour: Colors.orangeAccent,
-                  carChild: IconContents(
-                    icon: Icons.disc_full,
-                    title_text: '200',
-                    sub_title: 'Break Defects',
+                  Expanded(
+                    child: Reusable_Card(
+                      colour: Colors.orangeAccent,
+                      carChild: IconContents(
+                        icon: Icons.disc_full,
+                        title_text: '200',
+                        sub_title: 'Break Defects',
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Expanded(
-                child: Reusable_Card(
-                  colour: Colors.orangeAccent,
-                  carChild: IconContents(
-                    icon: Icons.battery_alert_rounded,
-                    title_text: '1000',
-                    sub_title: 'Battery',
+                  Expanded(
+                    child: Reusable_Card(
+                      colour: Colors.orangeAccent,
+                      carChild: IconContents(
+                        icon: Icons.battery_alert_rounded,
+                        title_text: '1000',
+                        sub_title: 'Battery',
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Reusable_Card(
-                  colour: Colors.orange,
-                  carChild: IconContents(
-                    icon: Icons.battery_2_bar_outlined,
-                    title_text: '100',
-                    sub_title: 'Low Charging',
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Reusable_Card(
-                  colour: Colors.lightBlueAccent,
-                  carChild: IconContents(
-                    icon: Icons.computer,
-                    title_text: '300',
-                    sub_title: 'Software Update',
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Reusable_Card(
-                  colour: Colors.blue,
-                  carChild: IconContents(
-                    icon: Icons.oil_barrel,
-                    title_text: '1000',
-                    sub_title: 'Oil Change',
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Reusable_Card(
-                  colour: Colors.lightGreen,
-                  carChild: IconContents(
-                    icon: Icons.warehouse,
-                    title_text: '800',
-                    sub_title: 'In Warehouse',
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Reusable_Card(
-                  colour: Colors.lightGreen,
-                  carChild: IconContents(
-                    icon: Icons.directions_boat_filled,
-                    title_text: '1000',
-                    sub_title: 'In Transit',
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Expanded(
-          child: Reusable_Card(
-            colour: Colors.lightGreen,
-            carChild: IconContents(
-              icon: Icons.disc_full,
-              title_text: '1000',
-              sub_title: 'All Cars',
             ),
-          ),
-        ),
-      ],
-    );
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Reusable_Card(
+                      colour: Colors.orange,
+                      carChild: IconContents(
+                        icon: Icons.battery_2_bar_outlined,
+                        title_text: '100',
+                        sub_title: 'Low Charging',
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Reusable_Card(
+                      colour: Colors.lightBlueAccent,
+                      carChild: IconContents(
+                        icon: Icons.computer,
+                        title_text: '300',
+                        sub_title: 'Software Update',
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Reusable_Card(
+                      colour: Colors.blue,
+                      carChild: IconContents(
+                        icon: Icons.oil_barrel,
+                        title_text: '1000',
+                        sub_title: 'Oil Change',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Reusable_Card(
+                      colour: Colors.lightGreen,
+                      carChild: IconContents(
+                        icon: Icons.warehouse,
+                        title_text: '800',
+                        sub_title: 'In Warehouse',
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Reusable_Card(
+                      colour: Colors.lightGreen,
+                      carChild: IconContents(
+                        icon: Icons.directions_boat_filled,
+                        title_text: '1000',
+                        sub_title: 'In Transit',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Reusable_Card(
+                colour: Colors.lightGreen,
+                carChild: IconContents(
+                  icon: Icons.disc_full,
+                  title_text: '1000',
+                  sub_title: 'All Cars',
+                ),
+              ),
+            ),
+          ],
+        )
+    ));
   }
 }
 

@@ -7,7 +7,9 @@ class OsmMapScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return SafeArea(child: Scaffold(
+        appBar: AppBar(title: Text('Fleet Buddy'),),
+        body:Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -75,6 +77,7 @@ class OsmMapScreen extends StatelessWidget {
         ),
         ),
       ],
+    ),),
     );
   }
 }

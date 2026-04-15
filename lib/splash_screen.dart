@@ -13,21 +13,26 @@ class _splash_screenState extends State<splash_screen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
+        // margin: const EdgeInsets.all(8),
+        // padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8),
+        ),
         alignment: Alignment.center,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               'V O L V O',
-              style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.black),
             ),
-            SizedBox(height: 1,),
-            Text('Fleet Manager', style: TextStyle(fontSize: 22)),
+            SizedBox(height: 2,),
+            Text('Fleet Manager', style: TextStyle(fontSize: 22, color: Colors.black)),
             SizedBox(height:1),
             TextButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => screen1()));
+              Navigator.pushNamed(context, '/input_page');
             }, child: Icon(Icons.arrow_circle_right, size: 30,color: Colors.black,)) // Add Navigator here for login to first screen.
           ],
         ),
