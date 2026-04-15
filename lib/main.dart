@@ -2,6 +2,7 @@ import 'package:fleet_buddy/input_page.dart';
 import 'package:flutter/material.dart';
 import 'list_page.dart';
 import 'vin_detail_page.dart';
+import 'splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,10 +44,10 @@ class MyApp extends StatelessWidget {
             ],
           ),
         ),
-        //body: SafeArea(child: screen1()
+        body: SafeArea(child: screen1()),
         //body: SafeArea(child: vin_list()),
-        body: SafeArea(child: OsmMapScreen()),
-
+        //body: SafeArea(child: OsmMapScreen()),
+        //body: SafeArea(child: splash_screen()),
       ),
     );
   }
